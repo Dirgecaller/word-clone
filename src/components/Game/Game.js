@@ -11,11 +11,6 @@ import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 import { checkGuess } from "../../game-helpers";
 import Banner from "../Banner/Banner";
 
-// Pick a random word on every pageload.
-const answer = sample(WORDS);
-// To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
-
 /*
   [
     { letter: 'W', status: 'incorrect' },
@@ -28,12 +23,20 @@ console.info({ answer });
 */
 
 function Game() {
+  const [answer, setAnswer] = React.useState("");
+
   const [guesses, setGuesses] = React.useState([]);
   const [numGuesses, setNumGuesses] = React.useState(0);
 
   const [winLose, setWinLose] = React.useState(null);
 
   function initialize() {
+    // Pick a random word on every pageload.
+    const nextAnswer = sample(WORDS);
+    setAnswer(nextAnswer);
+    // To make debugging easier, we'll log the solution in the console.
+    console.info({ nextAnswer });
+
     let initGuesses = [];
     for (let i = 0; i < NUM_OF_GUESSES_ALLOWED; i++) {
       initGuesses.push({

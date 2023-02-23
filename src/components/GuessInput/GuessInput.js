@@ -25,6 +25,7 @@ function GuessInput({ handleGuessSubmission }) {
         pattern="[A-Za-z]{5}"
         title="Please enter a 5-letter word."
         autoComplete="off"
+        autoFocus={true}
       />
     </form>
   );
