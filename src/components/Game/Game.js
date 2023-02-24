@@ -97,6 +97,8 @@ function Game() {
 
     if (answer === guess) {
       setWinLose(true);
+      //need to return now or a fail state can get set by the next if statement
+      return;
     }
 
     if (numGuesses === NUM_OF_GUESSES_ALLOWED - 1) {
